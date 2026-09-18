@@ -1,0 +1,156 @@
+/* ==========================================================================
+   BASE — reset, document defaults, typography, layout primitives
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + var(--sp-4));
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+  margin: 0 0 var(--sp-4);
+}
+
+h1 { font-size: var(--fs-3xl); text-transform: uppercase; }
+h2 { font-size: var(--fs-2xl); text-transform: uppercase; }
+h3 { font-size: var(--fs-lg); line-height: var(--lh-snug); }
+h4 { font-size: var(--fs-md); line-height: var(--lh-snug); }
+
+p  { margin: 0 0 var(--sp-4); max-width: 68ch; }
+ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-5); }
+li { margin-bottom: var(--sp-2); }
+
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a:hover { text-decoration-color: var(--accent); }
+
+strong { font-weight: 700; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Layout primitives ---------------------------------------------------- */
+
+.container {
+  width: min(100% - 2 * var(--sp-5), var(--container));
+  margin-inline: auto;
+}
+
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding-block: var(--section-y); }
+.section--tight { padding-block: var(--sp-7); }
+
+.section--alt     { background: var(--bg-alt); }
+.section--invert  { background: var(--bg-invert); color: var(--text-invert); }
+.section--brand   { background: var(--bg-brand); color: var(--white); }
+
+.section--invert a:hover,
+.section--brand a:hover { text-decoration-color: currentColor; }
+
+.stack > * + * { margin-top: var(--sp-4); }
+
+.grid { display: grid; gap: var(--sp-5); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+
+/* --- Section headings ----------------------------------------------------- */
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--sp-3);
+  display: block;
+}
+
+.section--invert .eyebrow { color: var(--highlight); }
+
+/* On crimson, the full-strength gold only reaches 3.97:1 — small bold text
+   needs the lighter tint to clear AA. */
+.section--brand .eyebrow,
+.hero .eyebrow,
+.cta-band .eyebrow { color: var(--highlight-soft); }
+
+.section-head { margin-bottom: var(--sp-7); }
+.section-head p { font-size: var(--fs-md); color: var(--text-muted); }
+.section--invert .section-head p,
+.section--brand .section-head p { color: inherit; opacity: 0.85; }
+
+.lead { font-size: var(--fs-md); line-height: 1.55; }
+
+/* --- Utilities ------------------------------------------------------------ */
+
+.skip-link {
+  position: absolute;
+  left: var(--sp-4);
+  top: -100px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--white);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top var(--speed) var(--ease);
+}
+.skip-link:focus { top: var(--sp-4); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.text-center { text-align: center; }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+
+/* --- Scroll reveal (progressive enhancement) ------------------------------ */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

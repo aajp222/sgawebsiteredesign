@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meetings & Minutes | WPI SGA</title>
+  <meta name="description" content="Senate meets Tuesdays at 6 PM in Innovation Studio 203. Meeting details, public comment, and the minutes archive." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ac2b37'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
+
+  <meta property="og:title" content="Meetings & Minutes | WPI SGA" />
+  <meta property="og:description" content="Senate meets Tuesdays at 6 PM in Innovation Studio 203. Meeting details, public comment, and the minutes archive." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body data-page="meetings">
+
+<!-- #region SITE HEADER -- generated from tools/partials/header.html; run tools/sync-partials.py after editing -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">SGA</span>
+      <span class="brand__text">WPI SGA<span>Student Government</span></span>
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav__toggle-label">Menu</span>
+    </button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" data-nav="home" href="index.html">Home</a></li>
+        <li><a class="nav__link" data-nav="about" href="about.html">About</a></li>
+        <li><a class="nav__link" data-nav="meetings" href="meetings.html">Meetings</a></li>
+        <li><a class="nav__link" data-nav="documents" href="governing-documents.html">Documents</a></li>
+        <li><a class="nav__link" data-nav="financials" href="financials.html">Financials</a></li>
+        <li><a class="nav__link" data-nav="resources" href="resources.html">Resources</a></li>
+        <li><a class="nav__link" data-nav="contact" href="contact.html">Contact</a></li>
+      </ul>
+      <a class="btn btn--sm" href="join.html">Join SGA</a>
+    </nav>
+  </div>
+</header>
+<!-- #endregion SITE HEADER -->
+
+<main id="main">
+<section class="page-hero">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li aria-current="page">Meetings &amp; Minutes</li>
+    </ol>
+    <h1>Meetings &amp; Minutes</h1>
+    <p>Senate meets weekly, in the open, and publishes the record.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid--2">
+      <article class="card card--brand">
+        <p class="card__date">Weekly</p>
+        <h3>Senate meeting</h3>
+        <p><strong>Tuesdays &middot; 6:00 PM</strong><br />Innovation Studio, Room 203</p>
+        <p class="mb-0">Open to all students, faculty, and staff. You do not need to be an SGA member to attend.</p>
+      </article>
+      <article class="card">
+        <p class="card__date">Every meeting</p>
+        <h3>Public comment</h3>
+        <p>Public comment opens each meeting. Anyone can voice a concern, ask a question, or comment before Senate moves to business.</p>
+        <p class="mb-0">No sign-up required &mdash; arrive at 6:00 PM and speak.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The record</span>
+      <h2>Meeting minutes</h2>
+      <p>Minutes from every Senate meeting, published by the Secretary.</p>
+    </div>
+
+    <!-- TODO: replace the placeholder rows below with the real minutes archive.
+         Each row needs data-term="<term>" so the filter buttons work. -->
+    <div class="callout callout--gold" style="margin-bottom: var(--sp-6);">
+      <p class="mb-0">
+        <strong>This archive is being rebuilt.</strong> The rows below are placeholders showing the
+        format. Past minutes are available from the Secretary at
+        <a href="mailto:sgasecretary@wpi.edu">sgasecretary@wpi.edu</a> in the meantime.
+      </p>
+    </div>
+
+    <div class="filters" data-filter-group role="group" aria-label="Filter minutes by term">
+      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All terms</button>
+      <button class="filter-btn" type="button" data-filter="a" aria-pressed="false">A Term</button>
+      <button class="filter-btn" type="button" data-filter="b" aria-pressed="false">B Term</button>
+      <button class="filter-btn" type="button" data-filter="c" aria-pressed="false">C Term</button>
+      <button class="filter-btn" type="button" data-filter="d" aria-pressed="false">D Term</button>
+    </div>
+    <p id="filter-status" class="visually-hidden" role="status"></p>
+
+    <div class="table-wrap">
+      <table>
+        <caption class="visually-hidden">Senate meeting minutes by term</caption>
+        <thead>
+          <tr>
+            <th scope="col">Meeting</th>
+            <th scope="col">Term</th>
+            <th scope="col">Summary</th>
+            <th scope="col">Minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-term="a">
+            <td>Senate Meeting 1</td>
+            <td><span class="badge">A Term</span></td>
+            <td>Committee assignments, budget overview for the year</td>
+            <td>Pending</td>
+          </tr>
+          <tr data-term="a">
+            <td>Senate Meeting 2</td>
+            <td><span class="badge">A Term</span></td>
+            <td>Governing document restructuring, first reading</td>
+            <td>Pending</td>
+          </tr>
+          <tr data-term="b">
+            <td>Senate Meeting 3</td>
+            <td><span class="badge">B Term</span></td>
+            <td>Appropriations recommendations</td>
+            <td>Pending</td>
+          </tr>
+          <tr data-term="c">
+            <td>Senate Meeting 4</td>
+            <td><span class="badge">C Term</span></td>
+            <td>Election nominations open</td>
+            <td>Pending</td>
+          </tr>
+          <tr data-term="d">
+            <td>Senate Meeting 5</td>
+            <td><span class="badge">D Term</span></td>
+            <td>End-of-year budget reconciliation</td>
+            <td>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow">
+    <span class="eyebrow">Bring something to Senate</span>
+    <h2>How to get on the agenda</h2>
+    <ol class="steps">
+      <li class="step">
+        <h3>For a quick concern, use public comment</h3>
+        <p>Show up at 6:00 PM and speak during the public comment period. Nothing to prepare.</p>
+      </li>
+      <li class="step">
+        <h3>For a formal item, email the Secretary</h3>
+        <p>Agenda items and legislation go through the Secretary ahead of the meeting.</p>
+        <p class="mb-0"><a href="mailto:sgasecretary@wpi.edu">sgasecretary@wpi.edu</a></p>
+      </li>
+      <li class="step">
+        <h3>For funding, go through the Financial Board</h3>
+        <p>Funding requests follow their own process rather than the Senate agenda.</p>
+        <p class="mb-0"><a href="financials.html">Funding process &rarr;</a></p>
+      </li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<!-- #region SITE FOOTER -- generated from tools/partials/footer.html; run tools/sync-partials.py after editing -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">SGA</span>
+          <span class="brand__text" style="color: var(--cream);">WPI SGA</span>
+        </a>
+        <p>The official voice of the WPI undergraduate student body. Senate meets Tuesdays at 6:00 PM in Innovation Studio 203 &mdash; open to everyone.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/wpi.sga/" aria-label="WPI SGA on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="mailto:sgaexecs@wpi.edu" aria-label="Email the SGA Executive Board">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m2 7 10 6 10-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Get involved</h3>
+        <ul>
+          <li><a href="join.html">Join SGA</a></li>
+          <li><a href="meetings.html">Attend a Senate meeting</a></li>
+          <li><a href="financials.html">Request funding</a></li>
+          <li><a href="membership.html">Membership</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>The organization</h3>
+        <ul>
+          <li><a href="about.html">About SGA</a></li>
+          <li><a href="structure.html">Structure</a></li>
+          <li><a href="governing-documents.html">Governing documents</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:sgaexecs@wpi.edu">sgaexecs@wpi.edu</a></li>
+          <li><a href="mailto:sgapresident@wpi.edu">sgapresident@wpi.edu</a></li>
+          <li><a href="contact.html">Full contact directory</a></li>
+          <li>Innovation Studio 203<br />100 Institute Road<br />Worcester, MA 01609</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="mb-0">&copy; 2026 WPI Student Government Association</p>
+      <p class="mb-0">Worcester Polytechnic Institute</p>
+    </div>
+  </div>
+</footer>
+<!-- #endregion SITE FOOTER -->
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
