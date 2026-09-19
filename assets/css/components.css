@@ -127,10 +127,10 @@
 body[data-page="home"]      .nav__link[data-nav="home"]::after,
 body[data-page="about"]     .nav__link[data-nav="about"]::after,
 body[data-page="structure"] .nav__link[data-nav="about"]::after,
-body[data-page="membership"].nav__link[data-nav="about"]::after,
+body[data-page="membership"] .nav__link[data-nav="about"]::after,
 body[data-page="meetings"]  .nav__link[data-nav="meetings"]::after,
 body[data-page="documents"] .nav__link[data-nav="documents"]::after,
-body[data-page="financials"].nav__link[data-nav="financials"]::after,
+body[data-page="financials"] .nav__link[data-nav="financials"]::after,
 body[data-page="resources"] .nav__link[data-nav="resources"]::after,
 body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: scaleX(1); }
 
@@ -727,3 +727,110 @@ tbody tr:hover { background: var(--cream); }
 }
 .callout p:last-child { margin-bottom: 0; }
 .callout--gold { border-left-color: var(--gold-dark); background: #fdf6e3; }
+
+/* --- Flashcards (Test Your Knowledge) ------------------------------------- */
+
+/* No-JS fallback: a plain list of expandable questions. */
+.flashlist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-3); }
+.flashlist[hidden] { display: none; }
+.flashlist__item {
+  background: var(--white);
+  border: var(--border-w) solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--sp-4) var(--sp-5);
+}
+.flashlist__item summary { cursor: pointer; display: grid; gap: var(--sp-1); }
+.flashlist__tag {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.flashlist__q { font-weight: 600; }
+.flashlist__a { margin: var(--sp-4) 0 var(--sp-2); color: var(--accent); }
+.flashlist__why { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* JS deck: one card at a time, stacked, flips on click. */
+.deck { max-width: 640px; margin: var(--sp-7) auto 0; }
+.deck__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.deck__tag { color: var(--accent); text-align: right; }
+
+.deck__stack { position: relative; padding-bottom: var(--sp-3); }
+.deck__stack::before, .deck__stack::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: var(--white);
+  border: var(--border-w) solid var(--ink);
+  border-radius: var(--radius);
+}
+.deck__stack::before { transform: translateY(12px) scale(0.97); }
+.deck__stack::after  { transform: translateY(6px) scale(0.985); }
+.deck__stack.is-last::before, .deck__stack.is-last::after { display: none; }
+
+.fcard {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  perspective: 1200px;
+}
+.fcard__inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 500ms var(--ease);
+}
+.fcard.is-flipped .fcard__inner { transform: rotateY(180deg); }
+.fcard__face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+  min-height: 320px;
+  padding: var(--sp-6);
+  border: var(--border-w) solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.fcard__front { background: var(--white); }
+.fcard__back { background: var(--crimson); color: var(--white); transform: rotateY(180deg); }
+.fcard__label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.fcard__front .fcard__label { color: var(--accent); }
+.fcard__back .fcard__label { color: var(--highlight-soft); }
+.fcard__q { font-size: var(--fs-md); font-weight: 600; line-height: 1.4; }
+.fcard__ans { font-family: var(--font-display); font-size: var(--fs-lg); line-height: 1.2; }
+.fcard__why { font-size: var(--fs-sm); line-height: 1.55; opacity: 0.92; }
+.fcard__hint { font-size: var(--fs-xs); opacity: 0.7; }
+.fcard:focus-visible { outline: 3px solid var(--gold-dark); outline-offset: 6px; border-radius: var(--radius); }
+
+.deck__nav { display: flex; flex-wrap: wrap; gap: var(--sp-3); justify-content: center; margin-top: var(--sp-6); }
+.deck__nav .btn[disabled] { opacity: 0.4; cursor: default; transform: none; box-shadow: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fcard__inner { transition: none; }
+}
