@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WPI Student Government Association</title>
   <meta name="description" content="The Undergraduate Student Government Association at Worcester Polytechnic Institute — the official voice of the WPI student body. Senate meets Tuesdays at 6 PM in Innovation Studio 203." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ac2b37'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23aa192c'/%3E%3Ctext x='16' y='22' font-family='Garamond,Georgia,serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
 
   <meta property="og:title" content="WPI Student Government Association" />
   <meta property="og:description" content="The Undergraduate Student Government Association at Worcester Polytechnic Institute — the official voice of the WPI student body. Senate meets Tuesdays at 6 PM in Innovation Studio 203." />
   <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
@@ -27,8 +23,7 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="index.html">
-      <span class="brand__mark" aria-hidden="true">SGA</span>
-      <span class="brand__text">WPI SGA<span>Student Government</span></span>
+      <img src="assets/img/sga-logo.png" alt="WPI Student Government Association" width="1898" height="637" />
     </a>
 
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
@@ -54,21 +49,34 @@
 <main id="main">
 <section class="hero">
   <div class="container hero__inner">
-    <span class="eyebrow">Worcester Polytechnic Institute</span>
-    <h1>Your voice. <em>Your campus.</em></h1>
-    <p class="hero__lead">
-      The Undergraduate Student Government Association is the official voice of the WPI student body &mdash;
-      we advocate for students, protect student rights, fund what you build, and make sure someone is in the
-      room when decisions get made.
-    </p>
-    <div class="btn-row">
-      <a class="btn btn--gold" href="join.html">Join SGA</a>
-      <a class="btn btn--light" href="financials.html">Request funding</a>
+    <div class="hero__split">
+      <div>
+        <span class="eyebrow">Worcester Polytechnic Institute</span>
+        <h1 class="wordmark">SGA</h1>
+        <p class="wordmark__sub">Undergraduate Student Government Association</p>
+      </div>
+      <div class="goat" aria-hidden="true">
+        <img src="assets/img/sga-logo.png" alt="" width="1898" height="637" />
+      </div>
     </div>
-    <div class="hero__meta">
-      <span>Senate &middot; Tuesdays 6:00 PM</span>
-      <span>Innovation Studio 203</span>
-      <span>Open to all students</span>
+
+    <div class="hero__body">
+      <p class="hero__lead">
+        Your voice, your campus. SGA is the official voice of the WPI student body &mdash; we advocate
+        for students, protect student rights, fund what you build, and make sure someone is in the room
+        when decisions get made.
+      </p>
+      <div>
+        <div class="hero__meta">
+          <span><strong>Senate</strong> &middot; Tuesdays, 6:00 PM</span>
+          <span>Innovation Studio 203</span>
+          <span>Open to all students</span>
+        </div>
+        <div class="btn-row">
+          <a class="btn" href="join.html">Join SGA</a>
+          <a class="btn btn--ghost" href="financials.html">Request funding</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -91,28 +99,24 @@
     </div>
     <div class="grid grid--4">
       <a class="tile reveal" href="financials.html">
-        <span class="tile__icon" aria-hidden="true">&#128176;</span>
         <h3>Request funding</h3>
         <p>Get your club or event funded through the Financial Board.</p>
-        <span class="tile__go">How it works &rarr;</span>
+        <span class="tile__go">How it works<span class="chev" aria-hidden="true"></span></span>
       </a>
       <a class="tile reveal" href="meetings.html">
-        <span class="tile__icon" aria-hidden="true">&#128221;</span>
         <h3>Meetings &amp; minutes</h3>
         <p>See what Senate voted on, and read the record.</p>
-        <span class="tile__go">Browse minutes &rarr;</span>
+        <span class="tile__go">Browse minutes<span class="chev" aria-hidden="true"></span></span>
       </a>
       <a class="tile reveal" href="contact.html">
-        <span class="tile__icon" aria-hidden="true">&#128231;</span>
         <h3>Contact your reps</h3>
         <p>Every executive and committee chair, one click away.</p>
-        <span class="tile__go">Email directory &rarr;</span>
+        <span class="tile__go">Email directory<span class="chev" aria-hidden="true"></span></span>
       </a>
       <a class="tile reveal" href="join.html">
-        <span class="tile__icon" aria-hidden="true">&#9997;</span>
         <h3>Get involved</h3>
         <p>Run for Senate, join a committee, or just show up.</p>
-        <span class="tile__go">Join SGA &rarr;</span>
+        <span class="tile__go">Join SGA<span class="chev" aria-hidden="true"></span></span>
       </a>
     </div>
   </div>
@@ -129,19 +133,19 @@
         <p class="card__date">Announcement</p>
         <h3>Governing documents under review</h3>
         <p>Senate is discussing a restructuring of SGA&rsquo;s governing documents. Proposals are debated in open session &mdash; come weigh in before anything is ratified.</p>
-        <a class="card__link" href="governing-documents.html">Read the documents &rarr;</a>
+        <a class="card__link" href="governing-documents.html">Read the documents<span class="chev" aria-hidden="true"></span></a>
       </article>
       <article class="card card--brand reveal">
         <p class="card__date">Every week</p>
         <h3>Senate meets Tuesdays at 6 PM</h3>
         <p>Innovation Studio 203. Public comment opens every meeting &mdash; bring a concern, a question, or just listen in.</p>
-        <a class="card__link" href="meetings.html">Meeting details &rarr;</a>
+        <a class="card__link" href="meetings.html">Meeting details<span class="chev" aria-hidden="true"></span></a>
       </article>
       <article class="card reveal">
         <p class="card__date">Club spotlight</p>
         <h3>WPI Running Club</h3>
         <p>Meets daily at 5 PM for runs between two and six miles. All skill and experience levels are welcome &mdash; no tryouts, no pace requirement.</p>
-        <a class="card__link" href="resources.html">More clubs &rarr;</a>
+        <a class="card__link" href="resources.html">More clubs<span class="chev" aria-hidden="true"></span></a>
       </article>
     </div>
   </div>
@@ -172,7 +176,7 @@
       </article>
     </div>
     <div class="btn-row" style="margin-top: var(--sp-7);">
-      <a class="btn btn--gold" href="structure.html">See the full structure</a>
+      <a class="btn btn--light" href="structure.html">See the full structure</a>
     </div>
   </div>
 </section>
@@ -234,7 +238,7 @@
     <h2>Nothing changes if nobody shows up</h2>
     <p>Senate is open to every undergraduate student. No application, no experience, no commitment required to walk in the door.</p>
     <div class="btn-row">
-      <a class="btn btn--gold" href="join.html">Join SGA</a>
+      <a class="btn btn--solid-light" href="join.html">Join SGA</a>
       <a class="btn btn--light" href="meetings.html">Come to a meeting</a>
     </div>
   </div>
@@ -246,10 +250,7 @@
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <a class="brand" href="index.html">
-          <span class="brand__mark" aria-hidden="true">SGA</span>
-          <span class="brand__text" style="color: var(--cream);">WPI SGA</span>
-        </a>
+        <a class="footer-wordmark" href="index.html">SGA</a>
         <p>The official voice of the WPI undergraduate student body. Senate meets Tuesdays at 6:00 PM in Innovation Studio 203 &mdash; open to everyone.</p>
         <div class="socials">
           <a href="https://www.instagram.com/wpi.sga/" aria-label="WPI SGA on Instagram">

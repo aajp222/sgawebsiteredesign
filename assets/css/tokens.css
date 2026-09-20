@@ -1,64 +1,70 @@
 /* ==========================================================================
    DESIGN TOKENS — the only file you need to edit to re-skin the entire site.
-   Colors and type here are PLACEHOLDERS based on WPI crimson. Replace them
-   with values sampled from the @wpi.sga Instagram feed.
+
+   Palette sampled from the official SGA logo (assets/img/sga-logo.png).
+   Typeface is Adobe Garamond Pro, the face used for "SGA" in that logo.
+   See the licensing note in README.md before launching publicly.
    ========================================================================== */
 
 :root {
-  /* --- Brand palette ---------------------------------------------------- */
-  --crimson:        #ac2b37;
-  --crimson-dark:   #8a1f29;
-  --crimson-light:  #d4515d;
-  --gold:           #f2c14e;
-  --gold-dark:      #d9a52f;
-  --gold-soft:      #ffd97a;   /* lighter tint: small text on crimson needs 4.5:1 */
+  /* --- Brand ------------------------------------------------------------ */
+  --crimson:        #aa192c;   /* sampled directly from the logo */
+  --crimson-deep:   #7d1220;
+  --crimson-tint:   #f5e7e9;
 
-  --ink:            #14110f;
-  --ink-soft:       #3d3733;
-  --gray:           #6b6360;
-  --gray-light:     #c9c2bd;
+  --ink:            #17161a;
+  --ink-soft:       #3f3d45;
+  --gray:           #6e6b74;
+  --gray-light:     #b6b3ba;
 
-  --cream:          #f7f3ec;
-  --cream-deep:     #ece5da;
+  --paper:          #fdfcfa;   /* warm off-white */
+  --paper-deep:     #f4f1ec;
   --white:          #ffffff;
 
   /* --- Semantic roles (components reference these, not raw colors) ------- */
-  --bg:             var(--cream);
+  --bg:             var(--paper);
   --bg-alt:         var(--white);
   --bg-invert:      var(--ink);
   --bg-brand:       var(--crimson);
 
   --text:           var(--ink);
   --text-muted:     var(--gray);
-  --text-invert:    var(--cream);
+  --text-invert:    var(--paper);
 
   --accent:         var(--crimson);
   --accent-contrast:var(--white);
-  --highlight:      var(--gold);
-  --highlight-soft: var(--gold-soft);  /* use on --bg-brand for small text */
 
-  --border:         var(--ink);
-  --border-soft:    var(--gray-light);
+  --rule:           #e2ded7;   /* hairline dividers */
+  --rule-strong:    #cdc8c0;
+  --rule-invert:    rgba(253, 252, 250, 0.22);
 
   /* --- Typography ------------------------------------------------------- */
-  --font-display: 'Archivo Black', 'Helvetica Neue', Impact, system-ui, sans-serif;
-  --font-body:    'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  /* Garamond for everything readable; a system sans for small UI chrome
+     only. No webfont CDN — the site makes zero external requests. */
+  --font-display: 'AGaramond', 'EB Garamond', Garamond, 'Times New Roman', serif;
+  --font-body:    var(--font-display);
+  --font-ui:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                  Helvetica, Arial, sans-serif;
 
+  /* Garamond has a small x-height, so the base size runs larger than a
+     sans would and the display sizes run much larger. */
   --fs-xs:    0.75rem;
-  --fs-sm:    0.875rem;
-  --fs-base:  1.0625rem;
-  --fs-md:    1.25rem;
-  --fs-lg:    1.5rem;
-  --fs-xl:    clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
-  --fs-2xl:   clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
-  --fs-3xl:   clamp(2.75rem, 1.5rem + 6vw, 6rem);
+  --fs-sm:    0.9375rem;
+  --fs-base:  1.1875rem;
+  --fs-md:    1.375rem;
+  --fs-lg:    1.75rem;
+  --fs-xl:    clamp(2rem, 1.5rem + 2.2vw, 3rem);
+  --fs-2xl:   clamp(2.75rem, 1.9rem + 4vw, 5rem);
+  --fs-3xl:   clamp(3.5rem, 2rem + 7vw, 7.5rem);
+  --fs-mega:  clamp(6rem, 2rem + 20vw, 19rem);   /* the huge SGA wordmark */
 
-  --lh-tight: 0.95;
-  --lh-snug:  1.2;
-  --lh-body:  1.65;
+  --lh-tight: 0.92;
+  --lh-snug:  1.15;
+  --lh-body:  1.6;
 
-  --tracking-display: -0.02em;
-  --tracking-label:    0.12em;
+  --tracking-display: -0.015em;
+  --tracking-caps:     0.06em;   /* Garamond caps want a little air */
+  --tracking-label:    0.14em;   /* small sans labels */
 
   /* --- Spacing (4px scale) ---------------------------------------------- */
   --sp-1:  0.25rem;
@@ -72,25 +78,18 @@
   --sp-9:  6rem;
   --sp-10: 8rem;
 
-  --section-y: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --section-y: clamp(4rem, 2.5rem + 7vw, 8.5rem);
 
   /* --- Shape ------------------------------------------------------------ */
-  --radius-sm: 8px;
-  --radius:    16px;
-  --radius-lg: 28px;
-  --radius-pill: 999px;
-
-  --border-w: 3px;
-
-  /* Hard offset shadow — poster/sticker feel, not soft blur */
-  --shadow:     6px 6px 0 var(--ink);
-  --shadow-sm:  4px 4px 0 var(--ink);
-  --shadow-lift: 10px 10px 0 var(--ink);
+  /* Editorial reset: hairlines and white space, no outlines or drop shadows. */
+  --radius-sm: 2px;
+  --radius:    3px;
+  --hairline:  1px;
 
   /* --- Layout ----------------------------------------------------------- */
-  --container: 1200px;
-  --container-narrow: 760px;
-  --header-h: 72px;
+  --container: 1180px;
+  --container-narrow: 680px;
+  --header-h: 76px;
 
   /* --- Motion ----------------------------------------------------------- */
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
