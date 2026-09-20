@@ -15,15 +15,21 @@ whose membership turns over every year.
    migrations can be tested against a plain Postgres.
 3. Copy **Settings → API → Project URL** and **anon public** key into
    `assets/js/config.js`.
-4. Create the first officer:
-   - **Authentication → Users → Add user**, with a real email and password.
-   - Copy that user's UUID, then in the SQL editor:
-     ```sql
-     insert into public.profiles (id, full_name, role)
-     values ('<uuid>', 'Their Name', 'admin');
-     ```
+4. Create the first officer — currently **ajpanchal@wpi.edu**:
+   - **Authentication → Users → Add user**, with that email and a password.
+   - Then run `004_first_officer.sql` in the SQL editor. It finds the user by
+     email and gives them an admin profile, so there is no UUID to copy. It
+     prints the resulting row: one row means it worked, zero means the auth
+     user does not exist yet.
+
    A row in `public.profiles` is what grants admin access. An auth user
    without one can sign in and see nothing — that is intentional.
+
+   To add more officers, copy the insert in that file and change the email and
+   name. Prefer the SGA role addresses (`sgapresident@`, `sgavp@`,
+   `sgasecretary@`…) over personal ones: an account tied to a student's own
+   email leaves when they graduate, which is the problem this site exists to
+   avoid.
 5. **Storage**: create a public bucket named `media` for photos, PDFs, and
    Instagram images.
 
