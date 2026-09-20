@@ -192,6 +192,12 @@ em { font-style: italic; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Delays must be zeroed too. Without this, a staggered entrance still
+       holds its from-state for the length of the delay, so an element that
+       starts hidden stays hidden — the opposite of what reduced motion is
+       meant to do. */
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }

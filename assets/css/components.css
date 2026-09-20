@@ -215,18 +215,48 @@ body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: s
 
 .hero__inner { padding-block: clamp(3rem, 1.5rem + 6vw, 6.5rem); }
 
-/* The huge SGA — Garamond Bold, matching the logo's lettering */
+/* --- The huge SGA ---------------------------------------------------------
+   Set to sit flush between the two labels, top rule to bottom rule.
+
+   A line box is taller than the letters: it carries the font's ascent and
+   descent, and "SGA" is all caps, so everything above the cap line and below
+   the baseline is empty space. Trimming it is what closes the gaps.
+
+   Adobe Garamond Bold, from its own tables: unitsPerEm 1000, hhea ascent 725,
+   descent -275, sCapHeight 660. At line-height 1 there is no half-leading, so
+   the trims are just (ascent - capHeight) = 0.065em off the top and the whole
+   descent = 0.275em off the bottom. What remains is 0.66em — the cap height
+   exactly. Both values are in em, so they hold at every clamp() size.
+
+   Re-measure these two numbers if the typeface ever changes.
+   -------------------------------------------------------------------------- */
+
 .wordmark {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-mega);
-  line-height: 0.78;
+  line-height: 1;
   letter-spacing: 0.015em;
   color: var(--crimson);
-  margin: 0 0 var(--sp-5);
+  /* The only spacing around the wordmark, so the labels hug it consistently.
+     In em, so it stays proportional as the type scales; the rem floor keeps
+     it from getting cramped on small screens. The neighbours zero their own
+     margins below so nothing collapses against these. */
+  margin: max(0.5rem, 0.06em) 0;
   text-wrap: nowrap;
 }
+
+.wordmark__mask {
+  display: block;
+  overflow: hidden;          /* trims the leading, and masks the reveal */
+}
+.wordmark__mask::before,
+.wordmark__mask::after { content: ''; display: block; height: 0; }
+.wordmark__mask::before { margin-bottom: -0.065em; }   /* ascent - cap height */
+.wordmark__mask::after  { margin-top: -0.275em; }      /* descent */
+
+.wordmark__text { display: block; }
 
 .wordmark__sub {
   display: block;
@@ -237,7 +267,41 @@ body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: s
   text-transform: uppercase;
   color: var(--ink-soft);
   line-height: 1.5;
-  margin-top: var(--sp-5);
+  margin-top: 0;
+}
+
+/* --- Hero entrance --------------------------------------------------------
+   Transform and opacity only, so it composites on the GPU and never touches
+   layout. The whole sequence is done in about 0.6s.
+
+   No .js gate: these are pure CSS animations, so they run with scripting off
+   too, and there is no flash of an un-animated wordmark before site.js loads.
+   prefers-reduced-motion is handled globally in base.css.
+   -------------------------------------------------------------------------- */
+
+@keyframes wordmark-rise {
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero .eyebrow   { margin-bottom: 0; animation: hero-fade-up 300ms var(--ease) both; }
+.wordmark__text  { animation: wordmark-rise 520ms cubic-bezier(0.22, 1, 0.36, 1) 40ms both; }
+.wordmark__sub   { animation: hero-fade-up 320ms var(--ease) 240ms both; }
+.hero .goat      { animation: hero-fade-up 320ms var(--ease) 300ms both; }
+
+/* Switched off outright rather than left to the global 0.01ms override: these
+   animations start from a hidden state, and "run instantly" still means the
+   hidden frame exists. `animation: none` renders them in place from the start. */
+@media (prefers-reduced-motion: reduce) {
+  .hero .eyebrow,
+  .wordmark__text,
+  .wordmark__sub,
+  .hero .goat { animation: none !important; }
 }
 
 .hero__split {
