@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Structure | WPI SGA</title>
   <meta name="description" content="The Executive Board, the six standing committees, the Cabinet, and the Financial Board — who does what inside WPI SGA." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ac2b37'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23aa192c'/%3E%3Ctext x='16' y='22' font-family='Garamond,Georgia,serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
 
   <meta property="og:title" content="Structure | WPI SGA" />
   <meta property="og:description" content="The Executive Board, the six standing committees, the Cabinet, and the Financial Board — who does what inside WPI SGA." />
   <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
@@ -27,8 +23,7 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="index.html">
-      <span class="brand__mark" aria-hidden="true">SGA</span>
-      <span class="brand__text">WPI SGA<span>Student Government</span></span>
+      <img src="assets/img/sga-logo.png" alt="WPI Student Government Association" width="1898" height="637" />
     </a>
 
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
@@ -42,6 +37,7 @@
         <li><a class="nav__link" data-nav="meetings" href="meetings.html">Meetings</a></li>
         <li><a class="nav__link" data-nav="documents" href="governing-documents.html">Documents</a></li>
         <li><a class="nav__link" data-nav="financials" href="financials.html">Financials</a></li>
+        <!-- Deferred: <li><a class="nav__link" data-nav="clubs" href="clubs.html">Clubs</a></li> -->
         <li><a class="nav__link" data-nav="resources" href="resources.html">Resources</a></li>
         <li><a class="nav__link" data-nav="contact" href="contact.html">Contact</a></li>
       </ul>
@@ -79,7 +75,8 @@
     </div>
 
     <!-- TODO: add the current term's officer names and headshots to each card. -->
-    <div class="grid grid--3">
+    <!-- Replaced from the database when rows are published; this stays as the fallback. -->
+    <div class="grid grid--3" data-source="people">
       <article class="card">
         <h3>President</h3>
         <p>Chief representative of the student body. Sets SGA&rsquo;s priorities for the year and serves as the primary liaison to WPI administration.</p>
@@ -103,9 +100,9 @@
       <article class="card">
         <h3>Chief Justice</h3>
         <p>Leads the Judicial Branch and interprets SGA&rsquo;s governing documents when their meaning or application is in question.</p>
-        <a class="card__link" href="contact.html">Contact directory &rarr;</a>
+        <a class="card__link" href="contact.html">Contact directory<span class="chev" aria-hidden="true"></span></a>
       </article>
-      <article class="card card--gold">
+      <article class="card card--tint">
         <h3>Reach all five</h3>
         <p>One address goes to the entire Executive Board.</p>
         <a class="card__link" href="mailto:sgaexecs@wpi.edu">sgaexecs@wpi.edu</a>
@@ -127,7 +124,7 @@
         <h3 style="margin: 0;">
           <button class="accordion__trigger" type="button" aria-expanded="true" aria-controls="cluster-student">
             Student Services
-            <span class="accordion__sign" aria-hidden="true">+</span>
+            <span class="accordion__sign" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="accordion__panel" id="cluster-student">
@@ -140,7 +137,7 @@
         <h3 style="margin: 0;">
           <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="cluster-external">
             External Services
-            <span class="accordion__sign" aria-hidden="true">+</span>
+            <span class="accordion__sign" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="accordion__panel" id="cluster-external">
@@ -156,7 +153,7 @@
         <h3 style="margin: 0;">
           <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="cluster-financial">
             Financial Services
-            <span class="accordion__sign" aria-hidden="true">+</span>
+            <span class="accordion__sign" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="accordion__panel" id="cluster-financial">
@@ -186,7 +183,7 @@
           <li>Organizational Representatives</li>
           <li>Executive Branch members <span class="badge">non-voting</span></li>
         </ul>
-        <p><a href="membership.html">How to get a seat &rarr;</a></p>
+        <p><a href="membership.html">How to get a seat<span class="chev" aria-hidden="true"></span></a></p>
       </div>
       <div>
         <span class="eyebrow">Key bodies</span>
@@ -213,10 +210,7 @@
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <a class="brand" href="index.html">
-          <span class="brand__mark" aria-hidden="true">SGA</span>
-          <span class="brand__text" style="color: var(--cream);">WPI SGA</span>
-        </a>
+        <a class="footer-wordmark" href="index.html">SGA</a>
         <p>The official voice of the WPI undergraduate student body. Senate meets Tuesdays at 6:00 PM in Innovation Studio 203 &mdash; open to everyone.</p>
         <div class="socials">
           <a href="https://www.instagram.com/wpi.sga/" aria-label="WPI SGA on Instagram">
@@ -241,6 +235,7 @@
           <li><a href="join.html">Join SGA</a></li>
           <li><a href="meetings.html">Attend a Senate meeting</a></li>
           <li><a href="financials.html">Request funding</a></li>
+          <!-- Deferred: <li><a href="feedback.html">Send feedback</a></li> -->
           <li><a href="membership.html">Membership</a></li>
         </ul>
       </div>
@@ -251,6 +246,7 @@
           <li><a href="about.html">About SGA</a></li>
           <li><a href="structure.html">Structure</a></li>
           <li><a href="governing-documents.html">Governing documents</a></li>
+          <!-- Deferred: <li><a href="clubs.html">Club directory</a></li> -->
           <li><a href="resources.html">Resources</a></li>
         </ul>
       </div>
@@ -274,6 +270,10 @@
 </footer>
 <!-- #endregion SITE FOOTER -->
 
+<script src="assets/js/config.js"></script>
+<script src="assets/vendor/supabase.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/page-data.js"></script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>

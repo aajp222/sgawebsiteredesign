@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meetings & Minutes | WPI SGA</title>
-  <meta name="description" content="Senate meets Tuesdays at 6 PM in Innovation Studio 203. Meeting details, public comment, and the minutes archive." />
+  <title>Club Directory | WPI SGA</title>
+  <meta name="description" content="Recognized student organizations at WPI, and how to add or update your club's listing." />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23aa192c'/%3E%3Ctext x='16' y='22' font-family='Garamond,Georgia,serif' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'%3ESGA%3C/text%3E%3C/svg%3E" />
 
-  <meta property="og:title" content="Meetings & Minutes | WPI SGA" />
-  <meta property="og:description" content="Senate meets Tuesdays at 6 PM in Innovation Studio 203. Meeting details, public comment, and the minutes archive." />
+  <meta property="og:title" content="Club Directory | WPI SGA" />
+  <meta property="og:description" content="Recognized student organizations at WPI, and how to add or update your club's listing." />
   <meta property="og:type" content="website" />
 
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
 </head>
-<body data-page="meetings">
+<body data-page="clubs">
 
 <!-- #region SITE HEADER -- generated from tools/partials/header.html; run tools/sync-partials.py after editing -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -52,127 +53,107 @@
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="index.html">Home</a></li>
-      <li aria-current="page">Meetings &amp; Minutes</li>
+      <li aria-current="page">Club Directory</li>
     </ol>
-    <h1>Meetings &amp; Minutes</h1>
-    <p>Senate meets weekly, in the open, and publishes the record.</p>
+    <h1>Club Directory</h1>
+    <p>Recognized student organizations at WPI. If your club is missing or out of date, send us the change.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="container">
-    <div class="grid grid--2">
-      <article class="card card--brand">
-        <p class="card__date">Weekly</p>
-        <h3>Senate meeting</h3>
-        <p><strong>Tuesdays &middot; 6:00 PM</strong><br />Innovation Studio, Room 203</p>
-        <p class="mb-0">Open to all students, faculty, and staff. You do not need to be an SGA member to attend.</p>
-      </article>
-      <article class="card">
-        <p class="card__date">Every meeting</p>
-        <h3>Public comment</h3>
-        <p>Public comment opens each meeting. Anyone can voice a concern, ask a question, or comment before Senate moves to business.</p>
-        <p class="mb-0">No sign-up required &mdash; arrive at 6:00 PM and speak.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section section--alt">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">The record</span>
-      <h2>Meeting minutes</h2>
-      <p>Minutes from every Senate meeting, published by the Secretary.</p>
+      <span class="eyebrow">Organizations</span>
+      <h2>Clubs at WPI</h2>
     </div>
 
-    <!-- TODO: replace the placeholder rows below with the real minutes archive.
-         Each row needs data-term="<term>" so the filter buttons work. -->
-    <div class="callout callout--quiet" style="margin-bottom: var(--sp-6);">
-      <p class="mb-0">
-        <strong>This archive is being rebuilt.</strong> The rows below are placeholders showing the
-        format. Past minutes are available from the Secretary at
-        <a href="mailto:sgasecretary@wpi.edu">sgasecretary@wpi.edu</a> in the meantime.
-      </p>
-    </div>
-
-    <div class="filters" data-filter-group role="group" aria-label="Filter minutes by term">
-      <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All terms</button>
-      <button class="filter-btn" type="button" data-filter="a" aria-pressed="false">A Term</button>
-      <button class="filter-btn" type="button" data-filter="b" aria-pressed="false">B Term</button>
-      <button class="filter-btn" type="button" data-filter="c" aria-pressed="false">C Term</button>
-      <button class="filter-btn" type="button" data-filter="d" aria-pressed="false">D Term</button>
-    </div>
-    <p id="filter-status" class="visually-hidden" role="status"></p>
-
-    <div class="table-wrap">
-      <table>
-        <caption class="visually-hidden">Senate meeting minutes by term</caption>
-        <thead>
-          <tr>
-            <th scope="col">Meeting</th>
-            <th scope="col">Term</th>
-            <th scope="col">Summary</th>
-            <th scope="col">Minutes</th>
-          </tr>
-        </thead>
-        <tbody data-source="minutes">
-          <tr data-term="a">
-            <td>Senate Meeting 1</td>
-            <td><span class="badge">A Term</span></td>
-            <td>Committee assignments, budget overview for the year</td>
-            <td>Pending</td>
-          </tr>
-          <tr data-term="a">
-            <td>Senate Meeting 2</td>
-            <td><span class="badge">A Term</span></td>
-            <td>Governing document restructuring, first reading</td>
-            <td>Pending</td>
-          </tr>
-          <tr data-term="b">
-            <td>Senate Meeting 3</td>
-            <td><span class="badge">B Term</span></td>
-            <td>Appropriations recommendations</td>
-            <td>Pending</td>
-          </tr>
-          <tr data-term="c">
-            <td>Senate Meeting 4</td>
-            <td><span class="badge">C Term</span></td>
-            <td>Election nominations open</td>
-            <td>Pending</td>
-          </tr>
-          <tr data-term="d">
-            <td>Senate Meeting 5</td>
-            <td><span class="badge">D Term</span></td>
-            <td>End-of-year budget reconciliation</td>
-            <td>Pending</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Replaced from the database when clubs are published; this stays as the fallback. -->
+    <div class="grid grid--3" data-source="clubs">
+      <article class="card">
+        <h3>WPI Running Club</h3>
+        <p>Meets daily at 5 PM for runs between two and six miles. All skill and experience levels are welcome &mdash; no tryouts, no pace requirement.</p>
+      </article>
+      <article class="card">
+        <h3>The directory is being built</h3>
+        <p>Club listings are being collected now. Until then, the Student Activities Office maintains the full list of recognized organizations.</p>
+        <a class="card__link" href="https://www.wpi.edu/student-experience/resources/club-resources">Club resources<span class="chev" aria-hidden="true"></span></a>
+      </article>
+      <article class="card">
+        <h3>Is your club here?</h3>
+        <p>Send us your listing using the form below and an SGA officer will add it.</p>
+        <a class="card__link" href="#submit">Submit a listing<span class="chev" aria-hidden="true"></span></a>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container container--narrow">
-    <span class="eyebrow">Bring something to Senate</span>
-    <h2>How to get on the agenda</h2>
-    <ol class="steps">
-      <li class="step">
-        <h3>For a quick concern, use public comment</h3>
-        <p>Show up at 6:00 PM and speak during the public comment period. Nothing to prepare.</p>
-      </li>
-      <li class="step">
-        <h3>For a formal item, email the Secretary</h3>
-        <p>Agenda items and legislation go through the Secretary ahead of the meeting.</p>
-        <p class="mb-0"><a href="mailto:sgasecretary@wpi.edu">sgasecretary@wpi.edu</a></p>
-      </li>
-      <li class="step">
-        <h3>For funding, go through the Financial Board</h3>
-        <p>Funding requests follow their own process rather than the Senate agenda.</p>
-        <p class="mb-0"><a href="financials.html">Funding process<span class="chev" aria-hidden="true"></span></a></p>
-      </li>
-    </ol>
+<section class="section section--alt" id="submit">
+  <div class="container">
+    <div class="grid grid--2">
+      <div>
+        <span class="eyebrow">Add or update</span>
+        <h2>Submit your club</h2>
+        <p>Anyone can send a listing. An SGA officer reviews it before it appears on this page &mdash; usually within a week.</p>
+
+        <form class="form" data-submit-to="club_submissions" data-required="name,contact_email"
+              data-success="Thanks &mdash; an officer will review your listing before it goes live.">
+          <div class="field">
+            <label for="cl-name">Club name <span class="hint">(required)</span></label>
+            <input type="text" id="cl-name" data-field="name" required />
+          </div>
+          <div class="field">
+            <label for="cl-email">Club contact email <span class="hint">(required)</span></label>
+            <input type="email" id="cl-email" data-field="contact_email" required placeholder="club@wpi.edu" />
+          </div>
+          <div class="field">
+            <label for="cl-desc">What does your club do?</label>
+            <textarea id="cl-desc" data-field="description" maxlength="1200"></textarea>
+          </div>
+          <div class="field">
+            <label for="cl-meet">When and where do you meet?</label>
+            <input type="text" id="cl-meet" data-field="meeting_time" placeholder="Thursdays, 7 PM" />
+          </div>
+          <div class="field">
+            <label for="cl-loc">Location</label>
+            <input type="text" id="cl-loc" data-field="location" placeholder="Campus Center 205" />
+          </div>
+          <div class="field">
+            <label for="cl-site">Website or social link</label>
+            <input type="url" id="cl-site" data-field="website" placeholder="https://" />
+          </div>
+          <div class="field">
+            <label for="cl-sub">Your name</label>
+            <input type="text" id="cl-sub" data-field="submitter_name" />
+          </div>
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="cl-url2">Leave this field empty</label>
+            <input type="text" id="cl-url2" data-honeypot tabindex="-1" autocomplete="off" />
+          </div>
+
+          <p class="form-status" data-form-status hidden></p>
+
+          <button class="btn" type="submit">Send listing</button>
+        </form>
+      </div>
+
+      <div>
+        <span class="eyebrow">Related</span>
+        <h2>Running a club</h2>
+        <div class="callout">
+          <h3>Funding</h3>
+          <p class="mb-0">Recognized organizations can request money through the Financial Board. <a href="financials.html">How funding works<span class="chev" aria-hidden="true"></span></a></p>
+        </div>
+        <div class="callout callout--quiet" style="margin-top: var(--sp-5);">
+          <h3>Starting a new club</h3>
+          <p class="mb-0">Recognition goes through the Student Activities Office, not SGA. <a href="https://www.wpi.edu/student-experience/resources/club-resources">Create a club<span class="chev" aria-hidden="true"></span></a></p>
+        </div>
+        <div class="callout callout--quiet" style="margin-top: var(--sp-5);">
+          <h3>Booking space and gear</h3>
+          <p class="mb-0">25Live, LibCal, Canva Pro and more are on the <a href="resources.html">resources page<span class="chev" aria-hidden="true"></span></a></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -246,6 +227,7 @@
 <script src="assets/vendor/supabase.js"></script>
 <script src="assets/js/api.js"></script>
 <script src="assets/js/page-data.js"></script>
+<script src="assets/js/forms.js"></script>
 <script src="assets/js/site.js"></script>
 </body>
 </html>

@@ -1,6 +1,43 @@
 /* ==========================================================================
-   BASE — reset, document defaults, typography, layout primitives
+   BASE — webfonts, reset, document defaults, typography, layout primitives
    ========================================================================== */
+
+/* --- Adobe Garamond Pro ---------------------------------------------------
+   Four styles under one declared family, so weight/style mapping is ours.
+   (The source files ship Bold under a separate family name; that is
+   irrelevant once we alias them here.)
+   OTF loads natively in every modern browser. WOFF2 would cut ~50% off
+   these files if the toolchain is ever available.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'AGaramond';
+  src: url('../fonts/AGaramondPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AGaramond';
+  src: url('../fonts/AGaramondPro-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AGaramond';
+  src: url('../fonts/AGaramondPro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AGaramond';
+  src: url('../fonts/AGaramondPro-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -18,6 +55,7 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
@@ -25,31 +63,31 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: var(--lh-tight);
+  font-weight: 700;
+  line-height: var(--lh-snug);
   letter-spacing: var(--tracking-display);
   text-wrap: balance;
   margin: 0 0 var(--sp-4);
 }
 
-h1 { font-size: var(--fs-3xl); text-transform: uppercase; }
-h2 { font-size: var(--fs-2xl); text-transform: uppercase; }
-h3 { font-size: var(--fs-lg); line-height: var(--lh-snug); }
-h4 { font-size: var(--fs-md); line-height: var(--lh-snug); }
+h1 { font-size: var(--fs-2xl); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-md); letter-spacing: 0; }
+h4 { font-size: var(--fs-base); letter-spacing: 0; }
 
-p  { margin: 0 0 var(--sp-4); max-width: 68ch; }
+p  { margin: 0 0 var(--sp-4); max-width: 70ch; }
 ul, ol { margin: 0 0 var(--sp-4); padding-left: var(--sp-5); }
 li { margin-bottom: var(--sp-2); }
 
-a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 a:hover { text-decoration-color: var(--accent); }
 
 strong { font-weight: 700; }
+em { font-style: italic; }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 /* --- Layout primitives ---------------------------------------------------- */
@@ -62,47 +100,49 @@ strong { font-weight: 700; }
 .container--narrow { max-width: var(--container-narrow); }
 
 .section { padding-block: var(--section-y); }
-.section--tight { padding-block: var(--sp-7); }
+.section--tight { padding-block: var(--sp-8); }
 
 .section--alt     { background: var(--bg-alt); }
 .section--invert  { background: var(--bg-invert); color: var(--text-invert); }
 .section--brand   { background: var(--bg-brand); color: var(--white); }
+
+/* A hairline instead of a block of color, wherever sections meet on paper */
+.section + .section:not(.section--alt):not(.section--invert):not(.section--brand):not(.cta-band) {
+  border-top: var(--hairline) solid var(--rule);
+}
 
 .section--invert a:hover,
 .section--brand a:hover { text-decoration-color: currentColor; }
 
 .stack > * + * { margin-top: var(--sp-4); }
 
-.grid { display: grid; gap: var(--sp-5); }
-.grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid { display: grid; gap: var(--sp-7) var(--sp-6); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.grid--4 { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); }
 
 /* --- Section headings ----------------------------------------------------- */
 
+/* Small chrome runs in the UI sans — Garamond at 12px uppercase gets thin. */
 .eyebrow {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: var(--fs-xs);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 var(--sp-3);
+  margin: 0 0 var(--sp-4);
   display: block;
 }
 
-.section--invert .eyebrow { color: var(--highlight); }
-
-/* On crimson, the full-strength gold only reaches 3.97:1 — small bold text
-   needs the lighter tint to clear AA. */
+.section--invert .eyebrow,
 .section--brand .eyebrow,
-.hero .eyebrow,
-.cta-band .eyebrow { color: var(--highlight-soft); }
+.hero .eyebrow { color: currentColor; opacity: 0.75; }
 
-.section-head { margin-bottom: var(--sp-7); }
-.section-head p { font-size: var(--fs-md); color: var(--text-muted); }
+.section-head { margin-bottom: var(--sp-8); max-width: 62ch; }
+.section-head p { font-size: var(--fs-md); color: var(--text-muted); line-height: 1.5; }
 .section--invert .section-head p,
-.section--brand .section-head p { color: inherit; opacity: 0.85; }
+.section--brand .section-head p { color: inherit; opacity: 0.8; }
 
 .lead { font-size: var(--fs-md); line-height: 1.55; }
 
@@ -116,8 +156,9 @@ strong { font-weight: 700; }
   background: var(--ink);
   color: var(--white);
   padding: var(--sp-3) var(--sp-5);
-  border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: 600;
   text-decoration: none;
   transition: top var(--speed) var(--ease);
 }
@@ -140,8 +181,8 @@ strong { font-weight: 700; }
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+  transform: translateY(16px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
 }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -151,6 +192,12 @@ strong { font-weight: 700; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Delays must be zeroed too. Without this, a staggered entrance still
+       holds its from-state for the length of the delay, so an element that
+       starts hidden stays hidden — the opposite of what reduced motion is
+       meant to do. */
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }
