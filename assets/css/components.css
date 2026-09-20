@@ -222,20 +222,24 @@ body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: s
    descent, and "SGA" is all caps, so everything above the cap line and below
    the baseline is empty space. Trimming it is what closes the gaps.
 
-   Adobe Garamond Bold, from its own tables: unitsPerEm 1000, hhea ascent 725,
-   descent -275, sCapHeight 660. At line-height 1 there is no half-leading, so
-   the trims are just (ascent - capHeight) = 0.065em off the top and the whole
-   descent = 0.275em off the bottom. What remains is 0.66em — the cap height
-   exactly. Both values are in em, so they hold at every clamp() size.
+   Trim to the INK, not to sCapHeight. Round capitals overshoot the cap line
+   and drop below the baseline, so trimming to cap height shaves the letters —
+   and unevenly, because S and G overshoot about twice as far as A does.
 
-   Re-measure these two numbers if the typeface ever changes.
+   Measured from what the browser actually rasterises at weight 700: ink runs
+   0.6875em above the baseline and 0.0313em below it. With line-height 1 and
+   hhea ascent 0.725 / descent 0.275, the trims are therefore
+   0.725 - 0.6875 = 0.0375em off the top and 0.275 - 0.0313 = 0.2437em off the
+   bottom, leaving 0.7188em: exactly the ink. In em, so it holds at every size.
+
+   Re-measure with canvas measureText().actualBoundingBox* if the face changes.
    -------------------------------------------------------------------------- */
 
 .wordmark {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--fs-mega);
+  font-size: var(--wordmark-size, var(--fs-mega));
   line-height: 1;
   letter-spacing: 0.015em;
   color: var(--crimson);
@@ -253,8 +257,8 @@ body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: s
 }
 .wordmark__mask::before,
 .wordmark__mask::after { content: ''; display: block; height: 0; }
-.wordmark__mask::before { margin-bottom: -0.065em; }   /* ascent - cap height */
-.wordmark__mask::after  { margin-top: -0.275em; }      /* descent */
+.wordmark__mask::before { margin-bottom: -0.0375em; }  /* ascent - ink above */
+.wordmark__mask::after  { margin-top: -0.2437em; }     /* descent - ink below */
 
 .wordmark__text { display: block; }
 
@@ -310,24 +314,37 @@ body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: s
   align-items: end;
 }
 @media (min-width: 900px) {
-  .hero__split { grid-template-columns: 1fr auto; gap: var(--sp-8); }
+  /* Goat first, then the eyebrow / SGA / sub stack — the order the real logo
+     uses. Total lockup is 3.11em wide (goat 1.20em + SGA 1.91em) plus the gap,
+     which fits the 1180px container at every size the clamp produces. */
+  .hero__split {
+    --wordmark-size: var(--fs-mega);
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(1.25rem, 0.5rem + 1.8vw, 2.75rem);
+  }
 }
 
-/* Crops the goat out of the full logo lockup. The numbers are the goat's
-   measured bounding box inside assets/img/sga-logo.png (1898x637): it
-   occupies x 0..827, y 9..630. Re-measure if the logo file is replaced. */
+/* Crops the goat out of the full logo lockup and scales it the way the logo
+   itself does. Measured inside assets/img/sga-logo.png (1898x637): the goat
+   occupies x 0..827, y 9..630, and the "SGA" letters beside it stand 494px
+   tall — so the goat is 1.2591x the letter height. Applying that same ratio to
+   the wordmark's ink height (0.7188em) gives 0.905em, which is why the goat is
+   sized off --wordmark-size rather than a fixed pixel value.
+
+   Re-measure all of these if the logo file is replaced. */
 .goat {
-  --goat-w: 210px;
+  --goat-h: calc(var(--wordmark-size, var(--fs-mega)) * 0.905);
   display: none;
-  width: var(--goat-w);
-  aspect-ratio: 828 / 622;
+  width: calc(var(--goat-h) * 828 / 622);
+  height: var(--goat-h);
   overflow: hidden;
   flex-shrink: 0;
 }
 .goat img {
-  width: calc(var(--goat-w) * 1898 / 828);
+  width: calc(var(--goat-h) * 1898 / 622);
   max-width: none;
-  margin-top: calc(var(--goat-w) * -9 / 828);
+  margin-top: calc(var(--goat-h) * -9 / 622);
   mix-blend-mode: multiply;
 }
 @media (min-width: 900px) { .goat { display: block; } }
