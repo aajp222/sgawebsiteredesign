@@ -88,6 +88,62 @@ is driven by `<body data-page="...">`, so the header markup is byte-identical ac
   (x 0–827, y 9–630 of 1898×637). If the logo file is ever replaced, re-measure — the numbers are
   commented in `components.css`.
 
+## The backend
+
+Officers sign in and edit the site. Everyone else submits through public forms
+that land in a moderation queue. Nobody outside SGA gets an account.
+
+It runs on **Supabase** (Postgres + Auth + Storage on the free tier). The pages
+talk to it directly — there is no API server to deploy or keep alive, which is
+what matters for a group that turns over every year. The security boundary is
+Postgres **row level security**, not the browser.
+
+Setup, the permissions table, and how to create the first officer are in
+[`db/README.md`](db/README.md). Until `assets/js/config.js` is filled in, every
+page falls back to its static content and the forms say so politely.
+
+| | What it does |
+|---|---|
+| `/admin` | Sign in, edit news, minutes, officers, documents, Instagram and clubs, triage submissions |
+| `feedback.html` | Public feedback form — anonymous unless someone leaves an email |
+| `clubs.html` | Club directory, plus a submit-a-listing form officers approve |
+
+### Running it locally
+
+`tools/devserver.py` is a stand-in for Supabase backed by a local Postgres. It
+implements the slice of the REST and Auth APIs the site uses, and — importantly
+— runs every request through `SET LOCAL ROLE` and the JWT claims exactly as
+PostgREST does, so the real policies decide the outcome. It means the whole
+stack can be developed and tested without a Supabase account.
+
+```bash
+python3 tools/devserver.py --port 8766     # then point config.js at it
+```
+
+### Tests
+
+```bash
+python3 db/rls_test.py          # 23 assertions on the security policies
+python3 tools/check-secrets.py  # refuses to ship a service_role key
+```
+
+`check-secrets.py` decodes every JWT it finds and checks the role claim, because
+the anon key and the service_role key look identical at a glance and only one of
+them belongs in this repo.
+
+### Things worth knowing
+
+- **Hiding a button protects nothing.** The admin UI only decides what is
+  offered; every statement is still checked by RLS. A non-officer who opens
+  `/admin` sees an empty console and every write is refused by Postgres.
+- **Public pages never lose content.** Database rows only ever *replace* static
+  markup, and only on a successful non-empty fetch. With JavaScript off, the
+  backend down, or the project unconfigured, visitors still get a working page.
+- **Funding requests still go through MyWPI.** The FR table and inbox exist, but
+  SGA's real funding process runs on the MyWPI FR Form with a weekly hearing
+  cycle. Decide whether this replaces that or just feeds it before pointing
+  students at it — two sources of truth for money is worse than one.
+
 ## What still needs real content
 
 Search the source for `TODO` — each one marks a placeholder:

@@ -148,6 +148,7 @@ body[data-page="membership"].nav__link[data-nav="about"],
 body[data-page="meetings"]  .nav__link[data-nav="meetings"],
 body[data-page="documents"] .nav__link[data-nav="documents"],
 body[data-page="financials"].nav__link[data-nav="financials"],
+body[data-page="clubs"]     .nav__link[data-nav="clubs"],
 body[data-page="resources"] .nav__link[data-nav="resources"],
 body[data-page="contact"]   .nav__link[data-nav="contact"] { color: var(--crimson); }
 
@@ -158,6 +159,7 @@ body[data-page="membership"] .nav__link[data-nav="about"]::after,
 body[data-page="meetings"]  .nav__link[data-nav="meetings"]::after,
 body[data-page="documents"] .nav__link[data-nav="documents"]::after,
 body[data-page="financials"] .nav__link[data-nav="financials"]::after,
+body[data-page="clubs"]     .nav__link[data-nav="clubs"]::after,
 body[data-page="resources"] .nav__link[data-nav="resources"]::after,
 body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: scaleX(1); }
 
@@ -876,3 +878,55 @@ tbody tr { border-top: var(--hairline) solid var(--rule); }
 @media (prefers-reduced-motion: reduce) {
   .fcard__inner { transition: none; }
 }
+
+/* --- Forms ---------------------------------------------------------------- */
+
+.form { max-width: 34rem; }
+.form > * + * { margin-top: var(--sp-5); }
+
+.field { display: grid; gap: var(--sp-2); }
+
+.field label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.field .hint { font-family: var(--font-ui); font-size: var(--fs-xs); color: var(--text-muted); }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--ink);
+  background: var(--white);
+  border: var(--hairline) solid var(--rule-strong);
+  border-radius: var(--radius);
+}
+.field textarea { min-height: 9rem; resize: vertical; line-height: 1.55; }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 2px solid var(--crimson);
+  outline-offset: 1px;
+  border-color: var(--crimson);
+}
+
+/* Bots fill this; people never see it. Not display:none — some bots skip that. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 3px solid var(--rule-strong);
+}
+.form-status.is-ok    { border-left-color: var(--crimson); background: var(--crimson-tint); }
+.form-status.is-warn  { border-left-color: var(--rule-strong); background: var(--paper-deep); }
+.form-status.is-error { border-left-color: var(--crimson); background: var(--crimson-tint); }

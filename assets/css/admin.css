@@ -1,0 +1,151 @@
+/* ==========================================================================
+   admin.css — the officer console.
+
+   Built from the same tokens as the public site so it reads as one thing,
+   with a denser layout because it is a working surface, not a page to read.
+   ========================================================================== */
+
+.admin-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: var(--hairline) solid var(--ink);
+}
+
+.admin-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4) var(--sp-5);
+  min-height: 60px;
+  padding-block: var(--sp-3);
+}
+
+.admin-bar__brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  margin-right: var(--sp-4);
+}
+.admin-bar__brand span {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-left: var(--sp-3);
+}
+
+.admin-nav { display: flex; flex-wrap: wrap; gap: var(--sp-4); list-style: none; margin: 0; padding: 0; }
+.admin-nav a {
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+.admin-nav a:hover { opacity: 1; }
+.admin-nav a[aria-current="page"] { opacity: 1; border-bottom: 2px solid var(--paper); }
+
+.admin-bar__right { margin-left: auto; display: flex; align-items: center; gap: var(--sp-4); }
+.admin-who { font-family: var(--font-ui); font-size: var(--fs-xs); opacity: 0.7; }
+
+.admin-main { padding-block: var(--sp-7) var(--sp-9); }
+
+.admin-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-4);
+  border-bottom: 2px solid var(--ink);
+}
+.admin-head h1 { font-size: var(--fs-xl); margin: 0; }
+.admin-head p { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* --- the record list ------------------------------------------------------ */
+
+.rows { display: grid; gap: 0; }
+
+.row-item {
+  display: grid;
+  gap: var(--sp-2) var(--sp-5);
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  padding: var(--sp-4) 0;
+  border-bottom: var(--hairline) solid var(--rule);
+}
+.row-item__title { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-md); }
+.row-item__meta {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+.row-item__body { grid-column: 1 / -1; font-size: var(--fs-sm); }
+.row-item__actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+.pill {
+  display: inline-block;
+  padding: 1px var(--sp-3);
+  border: var(--hairline) solid var(--rule-strong);
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pill--live   { border-color: var(--crimson); color: var(--crimson); }
+.pill--draft  { color: var(--text-muted); }
+.pill--new    { border-color: var(--crimson); color: var(--crimson); }
+
+.admin-empty {
+  padding: var(--sp-8) 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* --- editor panel --------------------------------------------------------- */
+
+.editor {
+  margin-bottom: var(--sp-8);
+  padding: var(--sp-6);
+  background: var(--white);
+  border: var(--hairline) solid var(--rule-strong);
+  border-radius: var(--radius);
+}
+.editor[hidden] { display: none; }
+.editor h2 { font-size: var(--fs-md); margin-bottom: var(--sp-5); }
+.editor .grid-fields { display: grid; gap: var(--sp-4); }
+@media (min-width: 700px) { .editor .grid-fields--2 { grid-template-columns: 1fr 1fr; } }
+.editor .actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-5); }
+
+/* --- sign in -------------------------------------------------------------- */
+
+.signin { max-width: 24rem; margin: var(--sp-9) auto; }
+.signin h1 { font-size: var(--fs-xl); }
+.signin .form { max-width: none; }
+
+.admin-gate { display: none; }
+.admin-gate.is-visible { display: block; }
+
+.notice {
+  padding: var(--sp-4) var(--sp-5);
+  border-left: 3px solid var(--crimson);
+  background: var(--crimson-tint);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--sp-6);
+}
+.notice code { font-size: 0.95em; }
