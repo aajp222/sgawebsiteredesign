@@ -102,11 +102,22 @@ Setup, the permissions table, and how to create the first officer are in
 [`db/README.md`](db/README.md). Until `assets/js/config.js` is filled in, every
 page falls back to its static content and the forms say so politely.
 
-| | What it does |
-|---|---|
-| `/admin` | Sign in, edit news, minutes, officers, documents, Instagram and clubs, triage submissions |
-| `feedback.html` | Public feedback form — anonymous unless someone leaves an email |
-| `clubs.html` | Club directory, plus a submit-a-listing form officers approve |
+| | What it does | Status |
+|---|---|---|
+| `/admin` | Sign in, edit news, minutes, officers, documents, Instagram and clubs, triage submissions | Built, waiting on Supabase keys |
+| `feedback.html` | Public feedback form — anonymous unless someone leaves an email | **Deferred** — built and tested, not linked |
+| `clubs.html` | Club directory, plus a submit-a-listing form officers approve | **Deferred** — built and tested, not linked |
+
+### Deferred pages
+
+`feedback.html` and `clubs.html` are finished and tested but deliberately kept
+off the site for now, so the first release is the redesign plus officer login
+and nothing else. They are unlinked and carry `noindex`; their database tables
+and admin inboxes are untouched.
+
+To switch them back on: uncomment the three `<!-- Deferred: ... -->` lines in
+`tools/partials/header.html` and `tools/partials/footer.html`, drop the
+`noindex` meta from the two pages, then run `python3 tools/sync-partials.py`.
 
 ### Running it locally
 
