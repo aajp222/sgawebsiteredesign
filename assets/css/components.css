@@ -154,10 +154,10 @@ body[data-page="contact"]   .nav__link[data-nav="contact"] { color: var(--crimso
 body[data-page="home"]      .nav__link[data-nav="home"]::after,
 body[data-page="about"]     .nav__link[data-nav="about"]::after,
 body[data-page="structure"] .nav__link[data-nav="about"]::after,
-body[data-page="membership"].nav__link[data-nav="about"]::after,
+body[data-page="membership"] .nav__link[data-nav="about"]::after,
 body[data-page="meetings"]  .nav__link[data-nav="meetings"]::after,
 body[data-page="documents"] .nav__link[data-nav="documents"]::after,
-body[data-page="financials"].nav__link[data-nav="financials"]::after,
+body[data-page="financials"] .nav__link[data-nav="financials"]::after,
 body[data-page="resources"] .nav__link[data-nav="resources"]::after,
 body[data-page="contact"]   .nav__link[data-nav="contact"]::after { transform: scaleX(1); }
 
@@ -763,3 +763,116 @@ tbody tr { border-top: var(--hairline) solid var(--rule); }
 .callout p:last-child { margin-bottom: 0; }
 .callout h3 { margin-bottom: var(--sp-3); }
 .callout--quiet { border-left-color: var(--rule-strong); }
+
+/* --- Flashcards (Test Your Knowledge) ------------------------------------- */
+
+/* No-JS fallback: a plain list of expandable questions. */
+.flashlist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-4); }
+.flashlist[hidden] { display: none; }
+.flashlist__item {
+  padding-top: var(--sp-4);
+  border-top: var(--hairline) solid var(--rule-strong);
+}
+.flashlist__item summary { cursor: pointer; display: grid; gap: var(--sp-2); }
+.flashlist__tag {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--crimson);
+}
+.flashlist__q { font-weight: 700; }
+.flashlist__a { margin: var(--sp-4) 0 var(--sp-2); color: var(--crimson); font-weight: 700; }
+.flashlist__why { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* JS deck: one card at a time, stacked, flips on click. */
+.deck { max-width: 640px; margin: var(--sp-8) auto 0; }
+.deck__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.deck__tag { color: var(--crimson); text-align: right; }
+
+.deck__stack { position: relative; padding-bottom: var(--sp-3); }
+.deck__stack::before, .deck__stack::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: var(--white);
+  border: var(--hairline) solid var(--rule-strong);
+  border-radius: var(--radius);
+}
+.deck__stack::before { transform: translateY(12px) scale(0.97); }
+.deck__stack::after  { transform: translateY(6px) scale(0.985); }
+.deck__stack.is-last::before, .deck__stack.is-last::after { display: none; }
+
+.fcard {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  perspective: 1200px;
+}
+.fcard__inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 500ms var(--ease);
+}
+.fcard.is-flipped .fcard__inner { transform: rotateY(180deg); }
+.fcard__face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-4);
+  min-height: 320px;
+  padding: var(--sp-7);
+  border: var(--hairline) solid var(--rule-strong);
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.fcard__front { background: var(--white); }
+.fcard__back {
+  background: var(--crimson);
+  color: var(--white);
+  border-color: var(--crimson);
+  transform: rotateY(180deg);
+}
+.fcard__label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+.fcard__front .fcard__label { color: var(--crimson); }
+.fcard__back .fcard__label { color: currentColor; opacity: 0.85; }
+.fcard__q { font-size: var(--fs-md); line-height: 1.4; }
+.fcard__ans { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); line-height: 1.2; }
+.fcard__why { font-size: var(--fs-sm); line-height: 1.55; opacity: 0.95; }
+.fcard__hint { font-family: var(--font-ui); font-size: var(--fs-xs); opacity: 0.6; }
+.fcard:focus-visible { outline: 2px solid var(--crimson); outline-offset: 6px; }
+
+.deck__nav { display: flex; flex-wrap: wrap; gap: var(--sp-3); justify-content: center; margin-top: var(--sp-6); }
+.deck__nav .btn[disabled] { opacity: 0.35; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fcard__inner { transition: none; }
+}
